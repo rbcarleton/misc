@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if [ -z $1 ];then
+ echo "usage: $0 dumplevel"
+ exit 1
+fi
+
+for i in `cat $HOME/conf/remotes.txt`
+do
+	$HOME/bin/dump-remote $i $1
+done

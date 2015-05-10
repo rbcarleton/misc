@@ -1,0 +1,20 @@
+#!/bin/sh
+
+if [ -z $1 ];then
+ echo "usage: $0 host dumplevel"
+ exit 1
+fi 
+
+if [ -z $1 ];then
+ echo "usage: $0 host dumplevel"
+ exit 1
+fi
+
+DATE=`date "+%Y%m%d"`
+
+. $HOME/ssh-env
+
+mkdir -p $HOME/backups/${DATE}
+ssh -C -l root $1 \
+ "/sbin/dump -${2} -L -a -u -f - / | /usr/bin/xz -z -c" >\
+ $HOME/backups/${DATE}/${1}-root-${2}.dmp.xz
