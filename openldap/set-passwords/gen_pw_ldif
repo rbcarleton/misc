@@ -1,0 +1,21 @@
+#!/usr/bin/awk -f
+
+# This filter reads on the standard in
+# The first column is the user id.
+# The second column is the password
+
+{
+
+## Password generation command
+ pw_gen_cmd = "slappasswd -s "$2
+
+ ## Generate it and close the command
+ pw_gen_cmd | getline my_pw_hash
+ close(pw_gen_cmd)
+
+ print("dn: uid="$1",ou=people,dc=example,dc=com")
+ print("changetype: modify")
+ print("add: userPassword")
+ print("userPassword: "my_pw_hash)
+ print("")
+}

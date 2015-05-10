@@ -1,0 +1,5 @@
+$ cat pw.txt | ./gen_pw_ldif
+dn: uid=bruce,ou=people,dc=example,dc=com
+changetype: modify
+add: userPassword
+userPassword: {SSHA}bedZtoek9zYOquI7tHigo5Mw6GzcPNB0
