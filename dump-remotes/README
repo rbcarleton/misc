@@ -1,0 +1,6 @@
+Simple scripts for running dump on remote FreeBSD hosts root file
+system and locally storing the backup. Useful for remote virtual
+hosts. The dump-remote script is called by dump-remotes. The host
+list is expected to be in the file $HOME/conf/remotes.txt. The
+scripts are expected to be in $HOME/bin. The backups are stored in
+$HOME/backups.
